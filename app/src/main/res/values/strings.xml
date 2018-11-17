@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">AppEcolife</string>
+    <string name="title_activity_scanner_qrcode">Ler QRCode</string>
+    <string name="action_Conta">Gerenciar Conta</string>
+    <string name="action_LerQRCode">Ler QRCode</string>
+    <string name="action_Pontuacao">Pontuação</string>
+    <string name="action_Sair">Sair</string>
+    <string name="title_activity_cadastro">CadastroActivity</string>
+    <string name="title_activity_codigo_seguranca">CodigoSegurancaActivity</string>
+    <string name="title_activity_gerenciar_conta">GerenciarContaActivity</string>
+</resources>

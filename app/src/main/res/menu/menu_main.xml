@@ -1,0 +1,25 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.tailasaviani.myapplication.MainActivity">
+    <item
+        android:id="@+id/action_Lerqrcode"
+        android:orderInCategory="100"
+        android:title="@string/action_LerQRCode"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_conta"
+        android:orderInCategory="100"
+        android:title="@string/action_Conta"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_pontuacao"
+        android:orderInCategory="100"
+        android:title="@string/action_Pontuacao"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_sair"
+        android:orderInCategory="100"
+        android:title="@string/action_Sair"
+        app:showAsAction="never" />
+</menu>
