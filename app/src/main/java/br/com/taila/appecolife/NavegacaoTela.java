@@ -26,7 +26,7 @@ public class NavegacaoTela extends AppCompatActivity {
 
         if(id == R.id.action_Lerqrcode){
             Toast.makeText(this, "Ler QRCode", Toast.LENGTH_LONG).show();
-            abreScannerQRCode();
+            abreScannerBarCode();
             return true;
         }
         if(id == R.id.action_conta){
@@ -61,11 +61,12 @@ public class NavegacaoTela extends AppCompatActivity {
 
     public void abreCodigoSeguranca(Ecolife ecolife){
         Intent abreCodigoSeg = new Intent(this,CodigoSegurancaActivity.class);
-
-        Bundle bundle = new Bundle();
-        bundle.putString("QRCode", ecolife.getQrcode());
-        abreCodigoSeg.putExtra("QRCode",bundle);
         startActivity(abreCodigoSeg);
+    }
+
+    public void abreScannerBarCode( ){
+        Intent intentAbrirScannerBarCode = new Intent(this,ScannerBarCodeActivity.class);
+        startActivity(intentAbrirScannerBarCode);
     }
 
 

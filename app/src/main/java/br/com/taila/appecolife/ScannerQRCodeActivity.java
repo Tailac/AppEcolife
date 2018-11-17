@@ -40,7 +40,6 @@ public class ScannerQRCodeActivity extends NavegacaoTela implements ZXingScanner
     private ZXingScannerView mScannerView;
     private Class<?> mClss = ScannerQRCodeActivity.class;
     private EcolifeService ecolifeService = new EcolifeService();
-    NavegacaoTela navegacaoTela = new NavegacaoTela();
 
 
 
@@ -67,11 +66,6 @@ public class ScannerQRCodeActivity extends NavegacaoTela implements ZXingScanner
         contentFrame.addView(mScannerView);
 
     }
-
-
-/*    public void launchSimpleActivity(View v) {
-        launchActivity(ScannerQRCodeActivity.class);
-    }*/
 
 
     //PERMISSÃO PARA ACESSAR A CAMERA
@@ -166,7 +160,7 @@ public class ScannerQRCodeActivity extends NavegacaoTela implements ZXingScanner
         }else{
             //Toast.makeText(this, "Pegou dados da API", Toast.LENGTH_SHORT).show();
             //String codigoSeg = ecolifeService.gerarCodigoSeguranca();
-//            abreCodigoSeguranca(RetEcolife);
+            abreCodigoSeguranca(RetEcolife);
             Toast.makeText(this, "QRcode = " + RetEcolife.getQrcode() + "  " + RetEcolife.getCoidgoSeguranca(), Toast.LENGTH_SHORT).show();
             //AbrirTelaCodigoSeguranca(codigoSeg);
         }
