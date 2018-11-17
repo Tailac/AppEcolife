@@ -13,6 +13,9 @@ public class ResiduoService {
 
     ClienteApiecolife clienteApi = new ClienteApiecolife();
 
+    public ResiduoService() throws IOException {
+    }
+
 
     public  Residuo retornarResiduo(String codBarra) throws JSONException, IOException {
         String responseBody = clienteApi.request("https://apirest-ecolife.herokuapp.com/api/residuos_cb/" + codBarra);

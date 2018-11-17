@@ -61,6 +61,9 @@ public class NavegacaoTela extends AppCompatActivity {
 
     public void abreCodigoSeguranca(Ecolife ecolife){
         Intent abreCodigoSeg = new Intent(this,CodigoSegurancaActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("codSegGerado",ecolife.getCoidgoSeguranca());
+        abreCodigoSeg.putExtras(bundle);
         startActivity(abreCodigoSeg);
     }
 

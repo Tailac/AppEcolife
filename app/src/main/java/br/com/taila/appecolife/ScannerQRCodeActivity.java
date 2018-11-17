@@ -41,6 +41,8 @@ public class ScannerQRCodeActivity extends NavegacaoTela implements ZXingScanner
     private Class<?> mClss = ScannerQRCodeActivity.class;
     private EcolifeService ecolifeService = new EcolifeService();
 
+    public ScannerQRCodeActivity() throws IOException {
+    }
 
 
     @Override
@@ -158,10 +160,11 @@ public class ScannerQRCodeActivity extends NavegacaoTela implements ZXingScanner
         if(RetEcolife == null){
             Toast.makeText(this, "QRCode não encontrado", Toast.LENGTH_SHORT).show();
         }else{
-            //Toast.makeText(this, "Pegou dados da API", Toast.LENGTH_SHORT).show();
-            //String codigoSeg = ecolifeService.gerarCodigoSeguranca();
-            abreCodigoSeguranca(RetEcolife);
-            Toast.makeText(this, "QRcode = " + RetEcolife.getQrcode() + "  " + RetEcolife.getCoidgoSeguranca(), Toast.LENGTH_SHORT).show();
+            String codigoSeg = ecolifeService.gerarCodigoSeguranca();
+            Ecolife EcolifeCodSeg = ecolifeService.GravarCodigoSeguranca(RetEcolife,codigoSeg.toString().trim());
+            Toast.makeText(this, "CodSeguranca = " + codigoSeg + "  " + RetEcolife.getCoidgoSeguranca(), Toast.LENGTH_SHORT).show();
+            abreCodigoSeguranca(EcolifeCodSeg);
+
             //AbrirTelaCodigoSeguranca(codigoSeg);
         }
 

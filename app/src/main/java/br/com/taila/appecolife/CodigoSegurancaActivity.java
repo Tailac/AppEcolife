@@ -25,7 +25,13 @@ public class CodigoSegurancaActivity extends NavegacaoTela {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        bt_Cd = (Button) findViewById(R.id.btn_cd);
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+
+        String ret = bundle.getString("codSegGerado");
+
+        bt_Cd = (Button) findViewById(R.id.btn_cd1);
+        bt_Cd.setText(ret);
         bt_Cd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

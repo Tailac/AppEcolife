@@ -17,7 +17,8 @@ public class Ecolife {
 
     }
 
-    public Ecolife(String descricao, String endereco, String qrcode, String coidgoSeguranca, String status, String coleta, String imgQRCode) {
+    public Ecolife(Long id, String descricao, String endereco, String qrcode, String coidgoSeguranca, String status, String coleta, String imgQRCode) {
+        this.id = id;
         this.descricao = descricao;
         this.endereco = endereco;
         this.qrcode = qrcode;

@@ -53,6 +53,9 @@ public class ScannerBarCodeActivity extends NavegacaoTela implements ZXingScanne
     String topicStc = "LED";
     MqttAndroidClient client;
 
+    public ScannerBarCodeActivity() throws IOException {
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
