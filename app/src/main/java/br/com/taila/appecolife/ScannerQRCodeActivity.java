@@ -164,8 +164,6 @@ public class ScannerQRCodeActivity extends NavegacaoTela implements ZXingScanner
             Ecolife EcolifeCodSeg = ecolifeService.GravarCodigoSeguranca(RetEcolife,codigoSeg.toString().trim());
             Toast.makeText(this, "CodSeguranca = " + codigoSeg + "  " + RetEcolife.getCoidgoSeguranca(), Toast.LENGTH_SHORT).show();
             abreCodigoSeguranca(EcolifeCodSeg);
-
-            //AbrirTelaCodigoSeguranca(codigoSeg);
         }
 
     }

@@ -42,16 +42,21 @@ public class NavegacaoTela extends AppCompatActivity {
     public void abreScannerQRCode(){
         Intent intentAbrirScanner = new Intent(this,ScannerQRCodeActivity.class);
         startActivity(intentAbrirScanner);
+        finish();
+
     }
 
     public void abreGerenciarConta(){
         Intent intentAbrirScanner = new Intent(this,GerenciarContaActivity.class);
         startActivity(intentAbrirScanner);
+        finish();
+
     }
 
     public void abrePontuacao( ){
         Intent intentAbrirScanner = new Intent(this,ScannerQRCodeActivity.class);
         startActivity(intentAbrirScanner);
+
     }
 
     public void sairAplicacao( ){
@@ -65,11 +70,13 @@ public class NavegacaoTela extends AppCompatActivity {
         bundle.putString("codSegGerado",ecolife.getCoidgoSeguranca());
         abreCodigoSeg.putExtras(bundle);
         startActivity(abreCodigoSeg);
+        finish();
     }
 
     public void abreScannerBarCode( ){
         Intent intentAbrirScannerBarCode = new Intent(this,ScannerBarCodeActivity.class);
         startActivity(intentAbrirScannerBarCode);
+        finish();
     }
 
 
