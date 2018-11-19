@@ -18,6 +18,7 @@
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -40,12 +41,18 @@
         <activity
             android:name=".ScannerBarCodeActivity"
             android:label="@string/title_activity_scanner_bar_code"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
 
-       <service android:name="org.eclipse.paho.android.service.MqttService"></service>
+        <service android:name="org.eclipse.paho.android.service.MqttService" />
 
-
+        <activity
+            android:name=".ResiduoActivity"
+            android:label="@string/title_activity_residuo"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".PontuacaoActivity"
+            android:label="@string/title_activity_pontuacao"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

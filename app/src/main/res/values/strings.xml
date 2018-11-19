@@ -9,4 +9,6 @@
     <string name="title_activity_codigo_seguranca">CodigoSegurancaActivity</string>
     <string name="title_activity_gerenciar_conta">GerenciarContaActivity</string>
     <string name="title_activity_scanner_bar_code">ScannerBarCodeActivity</string>
+    <string name="title_activity_residuo">ResiduoActivity</string>
+    <string name="title_activity_pontuacao">PontuacaoActivity</string>
 </resources>

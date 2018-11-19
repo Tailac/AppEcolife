@@ -151,6 +151,7 @@ public class ScannerBarCodeActivity extends NavegacaoTela implements ZXingScanne
         Toast.makeText(this, "Consultando Base de dados....Aguarde!!", Toast.LENGTH_SHORT).show();
 
         try {
+
             CarregarResiduo(result.getText().trim());
         } catch (JSONException e) {
             e.printStackTrace();
@@ -158,6 +159,7 @@ public class ScannerBarCodeActivity extends NavegacaoTela implements ZXingScanne
             e.printStackTrace();
         }
     }
+
 
 
     public void CarregarResiduo(String CodBarra) throws JSONException, IOException {
@@ -173,9 +175,11 @@ public class ScannerBarCodeActivity extends NavegacaoTela implements ZXingScanne
             if(RetResiduo.getTipoResiduo().equals("plástico")){
                 ligarLED1();
                 desligarLED2();
+                abreResiduoDescarte(RetResiduo);
             }else{
                 ligarLED2();
                 desligarLED1();
+                abreResiduoDescarte(RetResiduo);
             }
         }
     }

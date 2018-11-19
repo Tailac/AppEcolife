@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import br.com.taila.appecolife.model.Ecolife;
+import br.com.taila.appecolife.model.Residuo;
 
 public class NavegacaoTela extends AppCompatActivity {
 
@@ -36,13 +37,15 @@ public class NavegacaoTela extends AppCompatActivity {
         if(id == R.id.action_pontuacao){
             Toast.makeText(this, "Pontuação", Toast.LENGTH_LONG).show();
         }
+        if(id == R.id.action_sair){
+            sairAplicacao();
+        }
         return super.onOptionsItemSelected(item);
     }
 
     public void abreScannerQRCode(){
         Intent intentAbrirScanner = new Intent(this,ScannerQRCodeActivity.class);
         startActivity(intentAbrirScanner);
-        finish();
 
     }
 
@@ -53,9 +56,13 @@ public class NavegacaoTela extends AppCompatActivity {
 
     }
 
-    public void abrePontuacao( ){
-        Intent intentAbrirScanner = new Intent(this,ScannerQRCodeActivity.class);
-        startActivity(intentAbrirScanner);
+    public void abrePontuacao(String pontuacao){
+        Intent intentPontuacao = new Intent(this,PontuacaoActivity.class);
+        startActivity(intentPontuacao);
+        Bundle bundle = new Bundle();
+        bundle.putString("pontuacao", pontuacao);
+        intentPontuacao.putExtras(bundle);
+
 
     }
 
@@ -78,6 +85,20 @@ public class NavegacaoTela extends AppCompatActivity {
         startActivity(intentAbrirScannerBarCode);
         finish();
     }
+
+
+    public void abreResiduoDescarte(Residuo residuo){
+        Intent intentAbrirResiduo = new Intent(this,ResiduoActivity.class);
+        startActivity(intentAbrirResiduo);
+        Bundle bundle = new Bundle();
+        bundle.putString("descResiduo",residuo.getDescricao());
+        bundle.putString("tipoResiduo",residuo.getTipoResiduo());
+        bundle.putString("pontuacao",residuo.getValorPontuacao());
+        intentAbrirResiduo.putExtras(bundle);
+        startActivity(intentAbrirResiduo);
+        finish();
+    }
+
 
 
 

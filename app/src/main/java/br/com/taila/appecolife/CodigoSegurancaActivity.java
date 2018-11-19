@@ -64,7 +64,7 @@ public class CodigoSegurancaActivity extends NavegacaoTela {
         bt_Cd2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(bt_Cd1.getText()==codSegGerado){
+                if(bt_Cd2.getText()==codSegGerado){
                     abreScannerBarCode();
                     finish();
                 }else{
@@ -72,14 +72,13 @@ public class CodigoSegurancaActivity extends NavegacaoTela {
                     abreScannerQRCode();
                     finish();
                 }
-
             }
         });
 
         bt_Cd3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(bt_Cd1.getText()==codSegGerado){
+                if(bt_Cd3.getText()==codSegGerado){
                     abreScannerBarCode();
                     finish();
                 }else{
@@ -87,10 +86,8 @@ public class CodigoSegurancaActivity extends NavegacaoTela {
                     abreScannerQRCode();
                     finish();
                 }
-
             }
         });
-
     }
 
     public void setCodigoSegurancaButton(String cdS1, String cd2, String cd3){
