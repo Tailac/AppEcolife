@@ -20,12 +20,13 @@ public class PontuacaoActivity extends NavegacaoTela {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-//        Intent intent = getIntent();
-//        Bundle bundle = intent.getExtras();
-//        final String pontuacao = bundle.getString("pontuacao");
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        final String pontuacao = bundle.getString("pontuacao");
 
-/*        txt_pontuacao = (TextView)findViewById(R.id.txt_pontuacao);
-        txt_pontuacao.setText(pontuacao);*/
+
+       txt_pontuacao = (TextView) findViewById(R.id.txt_pontuacao);
+       txt_pontuacao.setText(pontuacao + " Econs");
 
     }
 

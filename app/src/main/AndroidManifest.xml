@@ -15,7 +15,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LoginActivity">
+        <activity android:name=".LoginActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,22 +26,32 @@
         </activity>
         <activity
             android:name=".ScannerQRCodeActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation"
             android:label="@string/title_activity_scanner_qrcode"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".CadastroActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation"
             android:label="@string/title_activity_cadastro"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".CodigoSegurancaActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation"
             android:label="@string/title_activity_codigo_seguranca"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".GerenciarContaActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation"
             android:label="@string/title_activity_gerenciar_conta"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ScannerBarCodeActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation"
             android:label="@string/title_activity_scanner_bar_code"
             android:theme="@style/AppTheme.NoActionBar" />
 
@@ -47,10 +59,14 @@
 
         <activity
             android:name=".ResiduoActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation"
             android:label="@string/title_activity_residuo"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".PontuacaoActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation"
             android:label="@string/title_activity_pontuacao"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>

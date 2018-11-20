@@ -92,7 +92,7 @@ public class CodigoSegurancaActivity extends NavegacaoTela {
 
     public void setCodigoSegurancaButton(String cdS1, String cd2, String cd3){
         Random rand = new Random();
-        int n = rand.nextInt(2);
+        int n = rand.nextInt(3);
         switch (n){
             case 0:
                 bt_Cd1.setText(cdS1);

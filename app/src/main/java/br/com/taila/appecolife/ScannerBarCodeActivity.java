@@ -86,6 +86,7 @@ public class ScannerBarCodeActivity extends NavegacaoTela implements ZXingScanne
 //                    Toast.makeText(context, "Conectado", Toast.LENGTH_LONG).show();
                     client.setCallback(ScannerBarCodeActivity.this);
                     final String topic = "LED";
+                    final String topic1 = "Sensor";
 
                     try{
                         IMqttToken subToken = client.subscribe(topic,1);
@@ -93,6 +94,21 @@ public class ScannerBarCodeActivity extends NavegacaoTela implements ZXingScanne
                             @Override
                             public void onSuccess(IMqttToken asyncActionToken) {
                                 Toast.makeText(ScannerBarCodeActivity.this, "Successfully subscribed to: " + topic, Toast.LENGTH_SHORT).show();
+//                                Toast.makeText(context, "Successfully subscribed to: " + topic, Toast.LENGTH_SHORT).show();
+                            }
+
+                            @Override
+                            public void onFailure(IMqttToken asyncActionToken, Throwable exception) {
+                                Toast.makeText(ScannerBarCodeActivity.this, "Couldn't subscribe to: " + topic, Toast.LENGTH_SHORT).show();
+//                                Toast.makeText(context, "Successfully subscribed to: " + topic, Toast.LENGTH_SHORT).show();
+                            }
+
+                        });
+                        IMqttToken subToken1 = client.subscribe(topic1,1);
+                        subToken1.setActionCallback(new IMqttActionListener() {
+                            @Override
+                            public void onSuccess(IMqttToken asyncActionToken) {
+                                Toast.makeText(ScannerBarCodeActivity.this, "Successfully subscribed to: " + topic1, Toast.LENGTH_SHORT).show();
 //                                Toast.makeText(context, "Successfully subscribed to: " + topic, Toast.LENGTH_SHORT).show();
                             }
 
@@ -192,6 +208,8 @@ public class ScannerBarCodeActivity extends NavegacaoTela implements ZXingScanne
 
     @Override
     public void messageArrived(String topic, MqttMessage message) throws Exception {
+
+
 
     }
 
