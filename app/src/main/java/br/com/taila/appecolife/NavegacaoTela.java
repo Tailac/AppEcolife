@@ -1,5 +1,7 @@
 package br.com.taila.appecolife;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -96,6 +98,18 @@ public class NavegacaoTela extends AppCompatActivity {
         bundle.putString("pontuacao",residuo.getValorPontuacao());
         intentAbrirResiduo.putExtras(bundle);
         startActivity(intentAbrirResiduo);
+        finish();
+    }
+
+    public void abreResiduoNaoCadastrado( ){
+        Intent intentAbrirResiduoNaoCadastrado = new Intent(this,ResiduoNaoCadastradoActivity.class);
+        startActivity(intentAbrirResiduoNaoCadastrado);
+        finish();
+    }
+
+    public void abreDescarte( ){
+        Intent intentAbrirDescarete = new Intent(this,DescarteActivity.class);
+        startActivity(intentAbrirDescarete);
         finish();
     }
 

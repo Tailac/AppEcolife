@@ -11,4 +11,6 @@
     <string name="title_activity_scanner_bar_code">ScannerBarCodeActivity</string>
     <string name="title_activity_residuo">ResiduoActivity</string>
     <string name="title_activity_pontuacao">PontuacaoActivity</string>
+    <string name="title_activity_residuo_nao_cadastrado">ResiduoNaoCadastradoActivity</string>
+    <string name="title_activity_descarte">DescarteActivity</string>
 </resources>

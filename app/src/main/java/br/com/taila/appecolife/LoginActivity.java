@@ -28,13 +28,13 @@ public class LoginActivity extends AppCompatActivity {
     public void AbreScanner(View view){
         Intent intentAbrirScanner = new Intent(this,ScannerQRCodeActivity.class);
         startActivity(intentAbrirScanner);
-        finish();
+        //finish();
     }
 
     public void AbreCadastro(View view){
         Intent intentAbrirScanner = new Intent(this,CadastroActivity.class);
         startActivity(intentAbrirScanner);
-        finish();
+        //finish();
     }
 
 

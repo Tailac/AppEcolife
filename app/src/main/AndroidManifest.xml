@@ -15,9 +15,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LoginActivity"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation">
+        <activity
+            android:name=".LoginActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,48 +27,56 @@
         </activity>
         <activity
             android:name=".ScannerQRCodeActivity"
-            android:screenOrientation="portrait"
             android:configChanges="orientation"
             android:label="@string/title_activity_scanner_qrcode"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".CadastroActivity"
-            android:screenOrientation="portrait"
             android:configChanges="orientation"
             android:label="@string/title_activity_cadastro"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".CodigoSegurancaActivity"
-            android:screenOrientation="portrait"
             android:configChanges="orientation"
             android:label="@string/title_activity_codigo_seguranca"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".GerenciarContaActivity"
-            android:screenOrientation="portrait"
             android:configChanges="orientation"
             android:label="@string/title_activity_gerenciar_conta"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ScannerBarCodeActivity"
-            android:screenOrientation="portrait"
             android:configChanges="orientation"
             android:label="@string/title_activity_scanner_bar_code"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <service android:name="org.eclipse.paho.android.service.MqttService" />
 
         <activity
             android:name=".ResiduoActivity"
-            android:screenOrientation="portrait"
             android:configChanges="orientation"
             android:label="@string/title_activity_residuo"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".PontuacaoActivity"
-            android:screenOrientation="portrait"
             android:configChanges="orientation"
             android:label="@string/title_activity_pontuacao"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ResiduoNaoCadastradoActivity"
+            android:label="@string/title_activity_residuo_nao_cadastrado"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".DescarteActivity"
+            android:label="@string/title_activity_descarte"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

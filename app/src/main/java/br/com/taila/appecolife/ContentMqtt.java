@@ -1,18 +1,8 @@
 package br.com.taila.appecolife;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
-import android.renderscript.Float4;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import org.eclipse.paho.android.service.MqttAndroidClient;
@@ -25,11 +15,10 @@ import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 
-public class ResiduoActivity extends NavegacaoTela  implements MqttCallback {
+public class ContentMqtt extends NavegacaoTela implements MqttCallback {
 
-    ImageView img_plastico;
-    ImageView img_metal;
-    TextView txt_descResiduo;
+    private Class<?> mClss = ScannerQRCodeActivity.class;
+    private Intent intent;
 
     //Configuração MQTT
     static final String MQTTHOST = "tcp://m15.cloudmqtt.com:15260";
@@ -41,53 +30,6 @@ public class ResiduoActivity extends NavegacaoTela  implements MqttCallback {
     String topicStc = "LED";
 
 
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_residuo);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        Intent intent = getIntent();
-        Bundle bundle = intent.getExtras();
-        final String descResiduo = bundle.getString("descResiduo");
-        final String tipoResiduo = bundle.getString("tipoResiduo");
-        final String pontuacao = bundle.getString("pontuacao");
-        pontuacaoResiduoIdentificado = pontuacao;
-
-        img_plastico = (ImageView) findViewById(R.id.img_plastico);
-        img_metal = (ImageView) findViewById(R.id.img_metal);
-        txt_descResiduo = (TextView) findViewById(R.id.txt_descResiduo);
-        Toast.makeText(this, "PONTUACAO: " + pontuacao, Toast.LENGTH_SHORT).show();
-        MQTT();
-
-        if(tipoResiduo.equals("plástico")){
-            img_metal.setVisibility(View.INVISIBLE);
-            img_plastico.setVisibility(View.VISIBLE);
-        }else{
-            img_metal.setVisibility(View.VISIBLE);
-            img_plastico.setVisibility(View.INVISIBLE);
-        }
-
-        txt_descResiduo.setText(descResiduo);
-
-        img_plastico.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                abrePontuacao(pontuacaoResiduoIdentificado);
-            }
-        });
-
-        img_metal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                abrePontuacao(pontuacaoResiduoIdentificado);
-            }
-        });
-
-    }
-
     @Override
     public void connectionLost(Throwable cause) {
 
@@ -95,7 +37,6 @@ public class ResiduoActivity extends NavegacaoTela  implements MqttCallback {
 
     @Override
     public void messageArrived(String topic, MqttMessage message) throws Exception {
-
         if(message.toString().equals("PLASTICO_ATIVADO") & controle == 0){
             Toast.makeText(this, "RESIDUO IDENTIFICADO", Toast.LENGTH_LONG).show();
             controle = 1;
@@ -112,13 +53,10 @@ public class ResiduoActivity extends NavegacaoTela  implements MqttCallback {
             abreGerenciarConta();
         }
 
-
-
 //        if(message.toString().equals("DESATIVADO") & controle == 1){
 //            Toast.makeText(this, "FECHA COMPARTIMENTO", Toast.LENGTH_LONG).show();
 //            controle = 0;
 //        }
-
     }
 
     @Override
@@ -126,7 +64,9 @@ public class ResiduoActivity extends NavegacaoTela  implements MqttCallback {
 
     }
 
-    private void MQTT(){
+
+
+    public void MQTT(){
         String clientId = MqttClient.generateClientId();
         client = new MqttAndroidClient(this.getApplicationContext(), MQTTHOST, clientId);
 //        client = new MqttAndroidClient(context,MQTTHOST,clientId);
@@ -139,9 +79,9 @@ public class ResiduoActivity extends NavegacaoTela  implements MqttCallback {
             token.setActionCallback(new IMqttActionListener() {
                 @Override
                 public void onSuccess(IMqttToken asyncActionToken) {
-                    Toast.makeText(ResiduoActivity.this, "Conectado", Toast.LENGTH_LONG).show();
+                    Toast.makeText(ContentMqtt.this, "Conectado", Toast.LENGTH_LONG).show();
 //                    Toast.makeText(context, "Conectado", Toast.LENGTH_LONG).show();
-                    client.setCallback(ResiduoActivity.this);
+                    client.setCallback(ContentMqtt.this);
                     final String topic = "Sensor";
                     final String topic1 = "LED";
                     final String topic2 = "controle";
@@ -151,13 +91,13 @@ public class ResiduoActivity extends NavegacaoTela  implements MqttCallback {
                         subToken.setActionCallback(new IMqttActionListener() {
                             @Override
                             public void onSuccess(IMqttToken asyncActionToken) {
-                                Toast.makeText(ResiduoActivity.this, "Successfully subscribed to: " + topic, Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ContentMqtt.this, "Successfully subscribed to: " + topic, Toast.LENGTH_SHORT).show();
 //                                Toast.makeText(context, "Successfully subscribed to: " + topic, Toast.LENGTH_SHORT).show();
                             }
 
                             @Override
                             public void onFailure(IMqttToken asyncActionToken, Throwable exception) {
-                                Toast.makeText(ResiduoActivity.this, "Couldn't subscribe to: " + topic, Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ContentMqtt.this, "Couldn't subscribe to: " + topic, Toast.LENGTH_SHORT).show();
 //                                Toast.makeText(context, "Successfully subscribed to: " + topic, Toast.LENGTH_SHORT).show();
                             }
 
@@ -165,14 +105,14 @@ public class ResiduoActivity extends NavegacaoTela  implements MqttCallback {
                         IMqttToken subToken1 = client.subscribe(topic1,1);
                         subToken1.setActionCallback(new IMqttActionListener() {
                             @Override
-                            public void onSuccess(IMqttToken asyncActionToken) {
-                                Toast.makeText(ResiduoActivity.this, "Successfully subscribed to: " + topic1, Toast.LENGTH_SHORT).show();
+                            public void onSuccess(IMqttToken asyncActionToken)  {
+                                Toast.makeText(ContentMqtt.this, "Successfully subscribed to: " + topic1, Toast.LENGTH_SHORT).show();
 //                                Toast.makeText(context, "Successfully subscribed to: " + topic, Toast.LENGTH_SHORT).show();
                             }
 
                             @Override
                             public void onFailure(IMqttToken asyncActionToken, Throwable exception) {
-                                Toast.makeText(ResiduoActivity.this, "Couldn't subscribe to: " + topic1, Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ContentMqtt.this, "Couldn't subscribe to: " + topic1, Toast.LENGTH_SHORT).show();
 //                                Toast.makeText(context, "Successfully subscribed to: " + topic, Toast.LENGTH_SHORT).show();
                             }
 
@@ -181,13 +121,13 @@ public class ResiduoActivity extends NavegacaoTela  implements MqttCallback {
                         subToken2.setActionCallback(new IMqttActionListener() {
                             @Override
                             public void onSuccess(IMqttToken asyncActionToken) {
-                                Toast.makeText(ResiduoActivity.this, "Successfully subscribed to: " + topic2, Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ContentMqtt.this, "Successfully subscribed to: " + topic2, Toast.LENGTH_SHORT).show();
 //                                Toast.makeText(context, "Successfully subscribed to: " + topic, Toast.LENGTH_SHORT).show();
                             }
 
                             @Override
                             public void onFailure(IMqttToken asyncActionToken, Throwable exception) {
-                                Toast.makeText(ResiduoActivity.this, "Couldn't subscribe to: " + topic2, Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ContentMqtt.this, "Couldn't subscribe to: " + topic2, Toast.LENGTH_SHORT).show();
 //                                Toast.makeText(context, "Successfully subscribed to: " + topic, Toast.LENGTH_SHORT).show();
                             }
 
@@ -200,7 +140,7 @@ public class ResiduoActivity extends NavegacaoTela  implements MqttCallback {
 
                 @Override
                 public void onFailure(IMqttToken asyncActionToken, Throwable exception) {
-                    Toast.makeText(ResiduoActivity.this, "Não conectado", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ContentMqtt.this, "Não conectado", Toast.LENGTH_SHORT).show();
 //                    Toast.makeText(context, "Não conectado", Toast.LENGTH_SHORT).show();
 
                 }
@@ -210,9 +150,33 @@ public class ResiduoActivity extends NavegacaoTela  implements MqttCallback {
         }
     }
 
+
+
+    public void ligarLED1(){
+        String topic = topicStc;
+        String message = "L1";
+        try{
+            client.publish(topic,message.getBytes(),0, false);
+        }catch (MqttException e){
+            e.printStackTrace();
+        }
+    }
+
+
+
     public void desligarLED1(){
         String topic = topicStc;
         String message = "D1";
+        try{
+            client.publish(topic,message.getBytes(),0, false);
+        }catch (MqttException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void ligarLED2(){
+        String topic = topicStc;
+        String message = "L2";
         try{
             client.publish(topic,message.getBytes(),0, false);
         }catch (MqttException e){
@@ -232,21 +196,9 @@ public class ResiduoActivity extends NavegacaoTela  implements MqttCallback {
     }
 
 
-        private BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                finish();
-            }
-        };
 
-
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        LocalBroadcastManager.getInstance(this)
-                .unregisterReceiver(broadcastReceiver);
-    }
 
 
 }
+
+
