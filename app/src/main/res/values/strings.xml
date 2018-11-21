@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">AppEcolife</string>
+    <string name="title_activity_scanner_qrcode"></string>
+    <string name="action_Conta">Gerenciar Conta</string>
+    <string name="action_LerQRCode">Ler QRCode</string>
+    <string name="action_Pontuacao">Pontuação</string>
+    <string name="action_Sair">Sair</string>
+    <string name="title_activity_cadastro"></string>
+    <string name="title_activity_codigo_seguranca"></string>
+    <string name="title_activity_gerenciar_conta"></string>
+    <string name="title_activity_scanner_bar_code"></string>
+    <string name="title_activity_residuo"></string>
+    <string name="title_activity_pontuacao"></string>
+    <string name="title_activity_residuo_nao_cadastrado"></string>
+    <string name="title_activity_descarte"></string>
+    <string name="title_activity_pontuacao_recebida"></string>
+</resources>
