@@ -7,11 +7,13 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class PontuacaoActivity extends NavegacaoTela {
 
     TextView txt_pontuacao;
+    ImageView img_novoDescarte;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +29,14 @@ public class PontuacaoActivity extends NavegacaoTela {
 
        txt_pontuacao = (TextView) findViewById(R.id.txt_pontuacao);
        txt_pontuacao.setText(pontuacao + " Econs");
+
+       img_novoDescarte = (ImageView)findViewById(R.id.img_novoDescarte);
+       img_novoDescarte.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               abreScannerBarCode();
+           }
+       });
 
     }
 

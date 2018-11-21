@@ -49,8 +49,7 @@ public class ContentMqtt extends NavegacaoTela implements MqttCallback {
             controle = 1;
             desligarLED1();
             desligarLED2();
-            //abreScannerBarCode();
-            abreGerenciarConta();
+            abreScannerBarCode();
         }
 
 //        if(message.toString().equals("DESATIVADO") & controle == 1){

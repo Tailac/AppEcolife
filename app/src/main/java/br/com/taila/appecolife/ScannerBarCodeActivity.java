@@ -38,20 +38,13 @@ import br.com.taila.appecolife.service.EcolifeService;
 import br.com.taila.appecolife.service.ResiduoService;
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
-public class ScannerBarCodeActivity extends NavegacaoTela implements ZXingScannerView.ResultHandler, MqttCallback {
+public class ScannerBarCodeActivity extends ContentMqtt implements ZXingScannerView.ResultHandler {
 
 
     private ZXingScannerView mScannerView;
     private Class<?> mClss = ScannerBarCodeActivity.class;
     private ResiduoService residuoService = new ResiduoService();
-//    private ConfiguracaoMQTT configuracaoMQTT = new ConfiguracaoMQTT(this);
 
-    static final String MQTTHOST = "tcp://m15.cloudmqtt.com:15260";
-    static final String USERNAME = "hzwxnzwy";
-    static final String PASSWORD = "8ztJzTw0rMy_";
-
-    String topicStc = "LED";
-    MqttAndroidClient client;
 
     public ScannerBarCodeActivity() throws IOException {
     }
@@ -68,74 +61,6 @@ public class ScannerBarCodeActivity extends NavegacaoTela implements ZXingScanne
         contentFrame.addView(mScannerView);
         MQTT();
     }
-
-    private void MQTT(){
-        String clientId = MqttClient.generateClientId();
-        client = new MqttAndroidClient(this.getApplicationContext(), MQTTHOST, clientId);
-//        client = new MqttAndroidClient(context,MQTTHOST,clientId);
-        MqttConnectOptions options = new MqttConnectOptions();
-        options.setUserName(USERNAME);
-        options.setPassword(PASSWORD.toCharArray());
-
-        try {
-            IMqttToken token = client.connect(options);
-            token.setActionCallback(new IMqttActionListener() {
-                @Override
-                public void onSuccess(IMqttToken asyncActionToken) {
-                    Toast.makeText(ScannerBarCodeActivity.this, "Conectado", Toast.LENGTH_LONG).show();
-//                    Toast.makeText(context, "Conectado", Toast.LENGTH_LONG).show();
-                    client.setCallback(ScannerBarCodeActivity.this);
-                    final String topic = "LED";
-                    final String topic1 = "Sensor";
-
-                    try{
-                        IMqttToken subToken = client.subscribe(topic,1);
-                        subToken.setActionCallback(new IMqttActionListener() {
-                            @Override
-                            public void onSuccess(IMqttToken asyncActionToken) {
-                                Toast.makeText(ScannerBarCodeActivity.this, "Successfully subscribed to: " + topic, Toast.LENGTH_SHORT).show();
-//                                Toast.makeText(context, "Successfully subscribed to: " + topic, Toast.LENGTH_SHORT).show();
-                            }
-
-                            @Override
-                            public void onFailure(IMqttToken asyncActionToken, Throwable exception) {
-                                Toast.makeText(ScannerBarCodeActivity.this, "Couldn't subscribe to: " + topic, Toast.LENGTH_SHORT).show();
-//                                Toast.makeText(context, "Successfully subscribed to: " + topic, Toast.LENGTH_SHORT).show();
-                            }
-
-                        });
-                        IMqttToken subToken1 = client.subscribe(topic1,1);
-                        subToken1.setActionCallback(new IMqttActionListener() {
-                            @Override
-                            public void onSuccess(IMqttToken asyncActionToken) {
-                                Toast.makeText(ScannerBarCodeActivity.this, "Successfully subscribed to: " + topic1, Toast.LENGTH_SHORT).show();
-//                                Toast.makeText(context, "Successfully subscribed to: " + topic, Toast.LENGTH_SHORT).show();
-                            }
-
-                            @Override
-                            public void onFailure(IMqttToken asyncActionToken, Throwable exception) {
-                                Toast.makeText(ScannerBarCodeActivity.this, "Couldn't subscribe to: " + topic, Toast.LENGTH_SHORT).show();
-//                                Toast.makeText(context, "Successfully subscribed to: " + topic, Toast.LENGTH_SHORT).show();
-                            }
-
-                        });
-                    }catch (MqttException e){
-                        e.printStackTrace();
-                    }
-                }
-
-                @Override
-                public void onFailure(IMqttToken asyncActionToken, Throwable exception) {
-                    Toast.makeText(ScannerBarCodeActivity.this, "Não conectado", Toast.LENGTH_SHORT).show();
-//                    Toast.makeText(context, "Não conectado", Toast.LENGTH_SHORT).show();
-
-                }
-            });
-        } catch (MqttException e) {
-            e.printStackTrace();
-        }
-    }
-
 
     @Override
     public void onResume() {
@@ -197,67 +122,6 @@ public class ScannerBarCodeActivity extends NavegacaoTela implements ZXingScanne
                 desligarLED1();
                 abreResiduoDescarte(RetResiduo);
             }
-        }
-    }
-
-
-    @Override
-    public void connectionLost(Throwable cause) {
-
-    }
-
-    @Override
-    public void messageArrived(String topic, MqttMessage message) throws Exception {
-
-
-
-    }
-
-    @Override
-    public void deliveryComplete(IMqttDeliveryToken token) {
-
-    }
-
-    public void ligarLED1(){
-        String topic = topicStc;
-        String message = "L1";
-        try{
-            client.publish(topic,message.getBytes(),0, false);
-        }catch (MqttException e){
-            e.printStackTrace();
-        }
-    }
-
-
-
-    public void desligarLED1(){
-        String topic = topicStc;
-        String message = "D1";
-        try{
-            client.publish(topic,message.getBytes(),0, false);
-        }catch (MqttException e){
-            e.printStackTrace();
-        }
-    }
-
-    public void ligarLED2(){
-        String topic = topicStc;
-        String message = "L2";
-        try{
-            client.publish(topic,message.getBytes(),0, false);
-        }catch (MqttException e){
-            e.printStackTrace();
-        }
-    }
-
-    public void desligarLED2(){
-        String topic = topicStc;
-        String message = "D2";
-        try{
-            client.publish(topic,message.getBytes(),0, false);
-
-        }catch (MqttException e){
-            e.printStackTrace();
         }
     }
 }
