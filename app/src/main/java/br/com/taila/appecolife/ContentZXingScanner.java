@@ -17,7 +17,7 @@ import br.com.taila.appecolife.model.Ecolife;
 import br.com.taila.appecolife.service.EcolifeService;
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
-public class ContentZXingScanner extends NavegacaoTela implements ZXingScannerView.ResultHandler {
+public class ContentZXingScanner extends ContentMqtt implements ZXingScannerView.ResultHandler {
 
     private static final int ZXING_CAMERA_PERMISSION = 1;
     private static final int INTERNET = 2;
@@ -118,6 +118,7 @@ public class ContentZXingScanner extends NavegacaoTela implements ZXingScannerVi
             Toast.makeText(this, "QRCode não encontrado", Toast.LENGTH_LONG).show();
         }else{
             String codigoSeg = ecolifeService.gerarCodigoSeguranca();
+            exibirCodigoSeguranca("CODIGO", codigoSeg);
             Ecolife EcolifeCodSeg = ecolifeService.GravarCodigoSeguranca(RetEcolife,codigoSeg.toString().trim());
             Toast.makeText(this, "CodSeguranca = " + codigoSeg + "  " + RetEcolife.getCoidgoSeguranca(), Toast.LENGTH_SHORT).show();
             abreCodigoSeguranca(EcolifeCodSeg);

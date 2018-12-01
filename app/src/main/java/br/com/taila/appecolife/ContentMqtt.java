@@ -84,6 +84,7 @@ public class ContentMqtt extends NavegacaoTela implements MqttCallback {
                     final String topic = "Sensor";
                     final String topic1 = "LED";
                     final String topic2 = "controle";
+                    final String topic3 = "CODIGO";
 
                     try{
                         IMqttToken subToken = client.subscribe(topic,1);
@@ -127,6 +128,21 @@ public class ContentMqtt extends NavegacaoTela implements MqttCallback {
                             @Override
                             public void onFailure(IMqttToken asyncActionToken, Throwable exception) {
                                 Toast.makeText(ContentMqtt.this, "Couldn't subscribe to: " + topic2, Toast.LENGTH_SHORT).show();
+//                                Toast.makeText(context, "Successfully subscribed to: " + topic, Toast.LENGTH_SHORT).show();
+                            }
+
+                        });
+                        IMqttToken subToken3 = client.subscribe(topic3,1);
+                        subToken1.setActionCallback(new IMqttActionListener() {
+                            @Override
+                            public void onSuccess(IMqttToken asyncActionToken)  {
+                                Toast.makeText(ContentMqtt.this, "Successfully subscribed to: " + topic3, Toast.LENGTH_SHORT).show();
+//                                Toast.makeText(context, "Successfully subscribed to: " + topic, Toast.LENGTH_SHORT).show();
+                            }
+
+                            @Override
+                            public void onFailure(IMqttToken asyncActionToken, Throwable exception) {
+                                Toast.makeText(ContentMqtt.this, "Couldn't subscribe to: " + topic3, Toast.LENGTH_SHORT).show();
 //                                Toast.makeText(context, "Successfully subscribed to: " + topic, Toast.LENGTH_SHORT).show();
                             }
 
@@ -194,7 +210,15 @@ public class ContentMqtt extends NavegacaoTela implements MqttCallback {
         }
     }
 
-
+    public void exibirCodigoSeguranca(String topico, String codigoSeguranca){
+        String topic = topico;
+        String message = codigoSeguranca;
+        try{
+            client.publish(topic,message.getBytes(),0, false);
+        }catch (MqttException e){
+            e.printStackTrace();
+        }
+    }
 
 
 
