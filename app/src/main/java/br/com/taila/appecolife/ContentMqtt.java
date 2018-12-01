@@ -28,6 +28,7 @@ public class ContentMqtt extends NavegacaoTela implements MqttCallback {
     String pontuacaoResiduoIdentificado;
     MqttAndroidClient client;
     String topicStc = "LED";
+    String topicCod = "CODIGO";
 
 
     @Override
@@ -133,7 +134,7 @@ public class ContentMqtt extends NavegacaoTela implements MqttCallback {
 
                         });
                         IMqttToken subToken3 = client.subscribe(topic3,1);
-                        subToken1.setActionCallback(new IMqttActionListener() {
+                        subToken3.setActionCallback(new IMqttActionListener() {
                             @Override
                             public void onSuccess(IMqttToken asyncActionToken)  {
                                 Toast.makeText(ContentMqtt.this, "Successfully subscribed to: " + topic3, Toast.LENGTH_SHORT).show();
@@ -210,8 +211,8 @@ public class ContentMqtt extends NavegacaoTela implements MqttCallback {
         }
     }
 
-    public void exibirCodigoSeguranca(String topico, String codigoSeguranca){
-        String topic = topico;
+    public void exibirCodigoSeguranca(String codigoSeguranca){
+        String topic = topicCod;
         String message = codigoSeguranca;
         try{
             client.publish(topic,message.getBytes(),0, false);

@@ -2,7 +2,9 @@ package br.com.taila.appecolife;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.widget.Toast;
@@ -25,7 +27,9 @@ public class ContentZXingScanner extends ContentMqtt implements ZXingScannerView
     private Class<?> mClss = ScannerQRCodeActivity.class;
     private EcolifeService ecolifeService = new EcolifeService();
 
+
     public ContentZXingScanner() throws IOException {
+
     }
 
 
@@ -64,6 +68,12 @@ public class ContentZXingScanner extends ContentMqtt implements ZXingScannerView
                 }
                 return;
         }
+    }
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        MQTT();
     }
 
     @Override
@@ -118,9 +128,9 @@ public class ContentZXingScanner extends ContentMqtt implements ZXingScannerView
             Toast.makeText(this, "QRCode não encontrado", Toast.LENGTH_LONG).show();
         }else{
             String codigoSeg = ecolifeService.gerarCodigoSeguranca();
-            exibirCodigoSeguranca("CODIGO", codigoSeg);
             Ecolife EcolifeCodSeg = ecolifeService.GravarCodigoSeguranca(RetEcolife,codigoSeg.toString().trim());
             Toast.makeText(this, "CodSeguranca = " + codigoSeg + "  " + RetEcolife.getCoidgoSeguranca(), Toast.LENGTH_SHORT).show();
+            exibirCodigoSeguranca(codigoSeg);
             abreCodigoSeguranca(EcolifeCodSeg);
         }
 

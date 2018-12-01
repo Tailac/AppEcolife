@@ -42,8 +42,6 @@ public class EcolifeService {
         }catch (Exception e){
             return null;
         }
-
-
     }
 
 
