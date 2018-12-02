@@ -115,12 +115,10 @@ public class ScannerBarCodeActivity extends ContentMqtt implements ZXingScannerV
             Toast.makeText(this, "QRcode = " + RetResiduo.getTipoResiduo() + "  " + RetResiduo.getDescricao(), Toast.LENGTH_SHORT).show();
             //AbrirTelaCodigoSeguranca(codigoSeg);
             if(RetResiduo.getTipoResiduo().equals("plástico")){
-                ligarLED1();
-                desligarLED2();
+                abrirCompartimento_1();
                 abreResiduoDescarte(RetResiduo);
             }else{
-                ligarLED2();
-                desligarLED1();
+                abrirCompartimento_2();
                 abreResiduoDescarte(RetResiduo);
             }
         }

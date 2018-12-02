@@ -31,8 +31,7 @@ public class DescarteActivity extends ContentMqtt {
         img_plastico.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ligarLED1();
-                desligarLED2();
+                abrirCompartimento_1();
                 Toast toast = Toast.makeText(DescarteActivity.this, "DEPOSITE O RESÍDUO", Toast.LENGTH_LONG);
                 toast.setGravity(Gravity.CENTER, 0, 0);
                 toast.show();
@@ -43,8 +42,7 @@ public class DescarteActivity extends ContentMqtt {
         img_metal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ligarLED2();
-                desligarLED1();
+                abrirCompartimento_2();
                 Toast toast = Toast.makeText(DescarteActivity.this, "DEPOSITE O RESÍDUO", Toast.LENGTH_LONG);
                 toast.setGravity(Gravity.CENTER, 0, 0);
                 toast.show();

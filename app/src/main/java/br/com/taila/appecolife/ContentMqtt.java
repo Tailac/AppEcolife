@@ -41,30 +41,18 @@ public class ContentMqtt extends NavegacaoTela implements MqttCallback {
         if(message.toString().equals("PLASTICO_ATIVADO") & controle == 0){
             Toast.makeText(this, "RESIDUO IDENTIFICADO", Toast.LENGTH_LONG).show();
             controle = 1;
-            desligarLED1();
-            desligarLED2();
             abrePontuacaoRecebida(pontuacaoResiduoIdentificado);
         }
-
         if(message.toString().equals("timeOut") & controle == 0){
             controle = 1;
-            desligarLED1();
-            desligarLED2();
             abreScannerBarCode();
         }
-
-//        if(message.toString().equals("DESATIVADO") & controle == 1){
-//            Toast.makeText(this, "FECHA COMPARTIMENTO", Toast.LENGTH_LONG).show();
-//            controle = 0;
-//        }
     }
 
     @Override
     public void deliveryComplete(IMqttDeliveryToken token) {
 
     }
-
-
 
     public void MQTT(){
         String clientId = MqttClient.generateClientId();
@@ -83,7 +71,7 @@ public class ContentMqtt extends NavegacaoTela implements MqttCallback {
 //                    Toast.makeText(context, "Conectado", Toast.LENGTH_LONG).show();
                     client.setCallback(ContentMqtt.this);
                     final String topic = "Sensor";
-                    final String topic1 = "LED";
+                    final String topic1 = "LIXEIRA";
                     final String topic2 = "controle";
                     final String topic3 = "CODIGO";
 
@@ -168,7 +156,7 @@ public class ContentMqtt extends NavegacaoTela implements MqttCallback {
 
 
 
-    public void ligarLED1(){
+    public void abrirCompartimento_1(){
         String topic = topicStc;
         String message = "L1";
         try{
@@ -178,9 +166,7 @@ public class ContentMqtt extends NavegacaoTela implements MqttCallback {
         }
     }
 
-
-
-    public void desligarLED1(){
+    public void fecharCompartimento_1(){
         String topic = topicStc;
         String message = "D1";
         try{
@@ -190,7 +176,7 @@ public class ContentMqtt extends NavegacaoTela implements MqttCallback {
         }
     }
 
-    public void ligarLED2(){
+    public void abrirCompartimento_2(){
         String topic = topicStc;
         String message = "L2";
         try{
@@ -200,7 +186,7 @@ public class ContentMqtt extends NavegacaoTela implements MqttCallback {
         }
     }
 
-    public void desligarLED2(){
+    public void fecharCompartimento_2(){
         String topic = topicStc;
         String message = "D2";
         try{
