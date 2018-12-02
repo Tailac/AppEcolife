@@ -27,7 +27,7 @@ public class ContentMqtt extends NavegacaoTela implements MqttCallback {
     int controle = 0;
     String pontuacaoResiduoIdentificado;
     MqttAndroidClient client;
-    String topicStc = "LED";
+    String topicStc = "LIXEIRA";
     String topicCod = "CODIGO";
 
 
@@ -80,13 +80,13 @@ public class ContentMqtt extends NavegacaoTela implements MqttCallback {
                         subToken.setActionCallback(new IMqttActionListener() {
                             @Override
                             public void onSuccess(IMqttToken asyncActionToken) {
-                                Toast.makeText(ContentMqtt.this, "Successfully subscribed to: " + topic, Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(ContentMqtt.this, "Successfully subscribed to: " + topic, Toast.LENGTH_SHORT).show();
 //                                Toast.makeText(context, "Successfully subscribed to: " + topic, Toast.LENGTH_SHORT).show();
                             }
 
                             @Override
                             public void onFailure(IMqttToken asyncActionToken, Throwable exception) {
-                                Toast.makeText(ContentMqtt.this, "Couldn't subscribe to: " + topic, Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(ContentMqtt.this, "Couldn't subscribe to: " + topic, Toast.LENGTH_SHORT).show();
 //                                Toast.makeText(context, "Successfully subscribed to: " + topic, Toast.LENGTH_SHORT).show();
                             }
 
@@ -95,13 +95,13 @@ public class ContentMqtt extends NavegacaoTela implements MqttCallback {
                         subToken1.setActionCallback(new IMqttActionListener() {
                             @Override
                             public void onSuccess(IMqttToken asyncActionToken)  {
-                                Toast.makeText(ContentMqtt.this, "Successfully subscribed to: " + topic1, Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(ContentMqtt.this, "Successfully subscribed to: " + topic1, Toast.LENGTH_SHORT).show();
 //                                Toast.makeText(context, "Successfully subscribed to: " + topic, Toast.LENGTH_SHORT).show();
                             }
 
                             @Override
                             public void onFailure(IMqttToken asyncActionToken, Throwable exception) {
-                                Toast.makeText(ContentMqtt.this, "Couldn't subscribe to: " + topic1, Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(ContentMqtt.this, "Couldn't subscribe to: " + topic1, Toast.LENGTH_SHORT).show();
 //                                Toast.makeText(context, "Successfully subscribed to: " + topic, Toast.LENGTH_SHORT).show();
                             }
 
@@ -110,13 +110,13 @@ public class ContentMqtt extends NavegacaoTela implements MqttCallback {
                         subToken2.setActionCallback(new IMqttActionListener() {
                             @Override
                             public void onSuccess(IMqttToken asyncActionToken) {
-                                Toast.makeText(ContentMqtt.this, "Successfully subscribed to: " + topic2, Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(ContentMqtt.this, "Successfully subscribed to: " + topic2, Toast.LENGTH_SHORT).show();
 //                                Toast.makeText(context, "Successfully subscribed to: " + topic, Toast.LENGTH_SHORT).show();
                             }
 
                             @Override
                             public void onFailure(IMqttToken asyncActionToken, Throwable exception) {
-                                Toast.makeText(ContentMqtt.this, "Couldn't subscribe to: " + topic2, Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(ContentMqtt.this, "Couldn't subscribe to: " + topic2, Toast.LENGTH_SHORT).show();
 //                                Toast.makeText(context, "Successfully subscribed to: " + topic, Toast.LENGTH_SHORT).show();
                             }
 
@@ -125,13 +125,13 @@ public class ContentMqtt extends NavegacaoTela implements MqttCallback {
                         subToken3.setActionCallback(new IMqttActionListener() {
                             @Override
                             public void onSuccess(IMqttToken asyncActionToken)  {
-                                Toast.makeText(ContentMqtt.this, "Successfully subscribed to: " + topic3, Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(ContentMqtt.this, "Successfully subscribed to: " + topic3, Toast.LENGTH_SHORT).show();
 //                                Toast.makeText(context, "Successfully subscribed to: " + topic, Toast.LENGTH_SHORT).show();
                             }
 
                             @Override
                             public void onFailure(IMqttToken asyncActionToken, Throwable exception) {
-                                Toast.makeText(ContentMqtt.this, "Couldn't subscribe to: " + topic3, Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(ContentMqtt.this, "Couldn't subscribe to: " + topic3, Toast.LENGTH_SHORT).show();
 //                                Toast.makeText(context, "Successfully subscribed to: " + topic, Toast.LENGTH_SHORT).show();
                             }
 
