@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AppEcolife</string>
+    <string name="app_name">Ecolife</string>
     <string name="title_activity_scanner_qrcode"></string>
     <string name="action_Conta">Gerenciar Conta</string>
     <string name="action_LerQRCode">Ler QRCode</string>

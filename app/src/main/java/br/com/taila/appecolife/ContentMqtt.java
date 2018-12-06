@@ -80,13 +80,13 @@ public class ContentMqtt extends NavegacaoTela implements MqttCallback {
                         subToken.setActionCallback(new IMqttActionListener() {
                             @Override
                             public void onSuccess(IMqttToken asyncActionToken) {
-                                //Toast.makeText(ContentMqtt.this, "Successfully subscribed to: " + topic, Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ContentMqtt.this, "Successfully subscribed to: " + topic, Toast.LENGTH_SHORT).show();
 //                                Toast.makeText(context, "Successfully subscribed to: " + topic, Toast.LENGTH_SHORT).show();
                             }
 
                             @Override
                             public void onFailure(IMqttToken asyncActionToken, Throwable exception) {
-                                //Toast.makeText(ContentMqtt.this, "Couldn't subscribe to: " + topic, Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ContentMqtt.this, "Couldn't subscribe to: " + topic, Toast.LENGTH_SHORT).show();
 //                                Toast.makeText(context, "Successfully subscribed to: " + topic, Toast.LENGTH_SHORT).show();
                             }
 

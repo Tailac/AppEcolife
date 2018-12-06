@@ -83,6 +83,7 @@
         <activity
             android:name=".PontuacaoRecebidaActivity"
             android:label="@string/title_activity_pontuacao_recebida"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
